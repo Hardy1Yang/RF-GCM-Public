@@ -1,0 +1,26 @@
+
+  model{
+    for (i in 1:n){
+      for (k in 1:m){
+        pX[i,k] <- ((z[k]*D)+((1-D)*g))
+        X[i,k] ~ dbern(pX[i,k]) }}
+      D ~ dbeta(Dmu*Dtau,(1-Dmu)*Dtau) T(0.001, 0.999)
+      g ~ dbeta(gmu*gtau,(1-gmu)*gtau) T(0.001, 0.999)
+    for (k in 1:m){
+      z[k] ~ dbern(p) }
+    
+    # Hyperpriors
+    Dmu ~ dbeta(alpha, alpha)
+    alpha <- 2
+    Dtau ~ dgamma(pow(Dtaumu,2)/pow(Dtausig,2),
+                  Dtaumu/pow(Dtausig,2)) T(0.001, 999.999)
+    Dtaumu <- 10
+    Dtausig <- 10
+    gmu <- prop
+    gtau ~ dgamma(pow(gtaumu,2)/pow(gtausig,2),
+                  gtaumu/pow(gtausig,2)) T(0.001, 999.999)
+    gtaumu <- 10
+    gtausig <- 10
+    p ~ dnorm(prop, 1) T(0.000001, 0.999999)
+
+  }
