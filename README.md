@@ -213,4 +213,4 @@ This project is provided for academic and research purposes.
 
 If you use this code, please cite:
 
-> Ho, T.-Y., Yang, H.-H. & Hsu, Y.-F. (2026). Enhancing Random Forest Performance on Imbalanced Data Using the General Condorcet Model. *Journal of Classification* (under review).
+> Yang, H.-H., Ho, T.-Y. & Hsu, Y.-F. (2026). Enhancing Random Forest Performance on Imbalanced Data Using the General Condorcet Model. *Journal of Classification* (under review).
