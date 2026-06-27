@@ -3,6 +3,7 @@
 # Output: Dhat_Ghat.pdf in the Overleaf figures directory
 
 library(tidyverse)
+library(ggrepel)
 source("config.R")
 
 dta_des <- read.csv(DATASET_DESC_FILE)
@@ -46,9 +47,12 @@ p <- ggplot() +
   geom_segment(data = dg_summary,
                aes(x = D_hat, xend = D_hat, y = g_hat, yend = prop.1.),
                linetype = "dotted", color = "grey50", linewidth = 0.4) +
-  # labels
-  geom_text(data = dg_ghat, aes(x = D_hat, y = g_hat, label = file_name),
-            vjust = -0.8, size = 2.8) +
+  # labels: full-size font, separated purely by position (ggrepel leader lines)
+  geom_text_repel(data = dg_ghat, aes(x = D_hat, y = g_hat, label = file_name),
+                  size = 4, max.overlaps = Inf, box.padding = 0.9,
+                  point.padding = 0.6, min.segment.length = 0,
+                  force = 8, force_pull = 0.2, max.time = 2, max.iter = 100000,
+                  segment.size = 0.2, segment.color = "grey60", seed = 42) +
   labs(x = expression(hat(D)), y = " ") +
   ggtitle(" ") +
   # manual legend
@@ -60,8 +64,12 @@ p <- ggplot() +
            size = 3, shape = 17, color = "red") +
   annotate("text", x = 0.09, y = max(dg_summary$g_hat, dg_summary$prop.1.) * 0.88,
            label = expression(pi), size = 4, hjust = 0) +
+  scale_x_continuous(expand = expansion(mult = 0.12)) +
+  scale_y_continuous(expand = expansion(mult = 0.18)) +
+  coord_cartesian(clip = "off") +
   theme_minimal() +
-  theme(text = element_text(size = 14))
+  theme(text = element_text(size = 14),
+        plot.margin = margin(10, 16, 10, 10))
 
 out_dir <- file.path(
   Sys.getenv("HOME"),
@@ -69,6 +77,6 @@ out_dir <- file.path(
   "\u61c9\u7528\u7a0b\u5f0f", "Overleaf", "RF-CCT"
 )
 ggsave(file.path(out_dir, "Dhat_Ghat.pdf"),
-       plot = p, width = 7, height = 5, bg = "white", dpi = 300)
+       plot = p, width = 8, height = 5.5, bg = "white", dpi = 300)
 
 cat("Saved to:", file.path(out_dir, "Dhat_Ghat.pdf"), "\n")

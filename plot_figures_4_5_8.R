@@ -70,15 +70,15 @@ plot_reliability <- function(pred_prob, true_labels, prop, panel_title,
     geom_point(data = rel_valid,
                aes(x = bin_mid, y = emp_prob), size = 2) +
     annotate("point", x = prop, y = prop,
-             color = "blue", size = 3.5) +
+             color = "blue", size = 4.5) +
     labs(title = paste0(panel_title, "\nn: ", n_total,
                         " ; prop: ", round(prop, 2)),
          x = expression(hat(p)(y == 1 ~ "|" ~ x)),
          y = "Empirical probability") +
     coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
     theme_minimal() +
-    theme(text = element_text(size = 10),
-          plot.title = element_text(size = 9, hjust = 0.5))
+    theme(text = element_text(size = 16),
+          plot.title = element_text(size = 15, hjust = 0.5))
 }
 
 # ── Helper: Re-fit RF to get OOB probabilities ────────────────
@@ -296,8 +296,9 @@ generate_figure_8 <- function() {
                         round(info$prop.1., 2), ")"),
          x = "Number of trees", y = "G-mean") +
     theme_minimal() +
-    theme(text = element_text(size = 11),
-          plot.title = element_text(size = 10, hjust = 0.5),
+    theme(text = element_text(size = 16),
+          plot.title = element_text(size = 15, hjust = 0.5),
+          axis.text = element_text(size = 13),
           legend.title = element_blank(),
           legend.position = "right")
 
@@ -315,8 +316,9 @@ generate_figure_8 <- function() {
                         round(info$prop.1., 2), ")"),
          x = "Number of trees", y = "F1 score") +
     theme_minimal() +
-    theme(text = element_text(size = 11),
-          plot.title = element_text(size = 10, hjust = 0.5),
+    theme(text = element_text(size = 16),
+          plot.title = element_text(size = 15, hjust = 0.5),
+          axis.text = element_text(size = 13),
           legend.title = element_blank(),
           legend.position = "right")
 
