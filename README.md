@@ -2,7 +2,11 @@
 
 **Enhancing Random Forest Performance on Imbalanced Data Using the General Condorcet Model**
 
-This repository contains the R code accompanying the manuscript submitted to the *Journal of Classification*.
+This repository contains the R code accompanying:
+
+> Yang, H.-H., Ho, T.-Y., & Hsu, Y.-F. Enhancing random forest performance on imbalanced data using the General Condorcet Model. *Journal of Classification* (minor revision).
+
+GCM comes from cultural consensus theory in mathematical psychology; here it replaces majority voting as the aggregation rule of a random forest.
 
 ## Overview
 
@@ -55,8 +59,8 @@ The code implements the full experimental pipeline, including:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/Hardy1Yang/RF-GCM.git
-   cd RF-GCM
+   git clone https://github.com/Hardy1Yang/RF-GCM-Public.git
+   cd RF-GCM-Public
    ```
 
 2. Install R dependencies (handled automatically by `setup.R`):
@@ -213,4 +217,6 @@ This project is provided for academic and research purposes.
 
 If you use this code, please cite:
 
-> Yang, H.-H., Ho, T.-Y. & Hsu, Y.-F. (2026). Enhancing Random Forest Performance on Imbalanced Data Using the General Condorcet Model. *Journal of Classification* (under review).
+> Yang, H.-H., Ho, T.-Y., & Hsu, Y.-F. (2026). Enhancing random forest performance on imbalanced data using the General Condorcet Model. *Journal of Classification* (minor revision).
+
+Contact: Hau-Hung Yang — hauhungyang@as.edu.tw · https://hardy1yang.github.io
